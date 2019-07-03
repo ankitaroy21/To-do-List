@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TO DO LIST</title>
+<script src="jquery.js"></script>
+<script src="newlist.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Barrio' rel='stylesheet'>
+<link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+<style>
+        body {
+                background: url(white_brick_wall.png) repeat 0 0; overflow: auto;
+        }
+        h1 {
+                text-align: center; font-family:Barrio; color: blue;
+                text-shadow: 1px 1px 1px #ccc;
+        }
+        #cross{
+                font-weight: bold; color: red; cursor: pointer; opacity: 0;
+                position: absolute; right: 0; top:-10; font-family:'Barrio';
+
+        }
+        #cross:hover {
+                opacity: 1;
+        }
+        ul#myList li {
+                white-space: initial; overflow: hidden;
+        }
+        li {
+                list-style:none; border: 5px; position: relative;
+                font-size: 20px; background-color: white;
+                cursor:pointer; font-family: 'Nobile'; padding-top: 5px;
+                box-shadow: 0 0 0 0.2em rgb(250, 253, 44);
+                margin: 30px; line-height: 200%; overflow:hidden;
+        }
+        li:hover {
+                background-color: blanchedalmond;
+        }
+        .checked {
+                text-decoration: line-through; opacity: 0.5;
+        }
+        #root {
+                width: 400px; height:70px; outline: 0; border: 0; transform: skew(10deg);
+                font-size: 30px; text-align: left; background-color: white;
+                display: block; margin-left: auto; margin-right: auto; 
+        }
+        #editOp {
+                position: relative; left:0; top: 0; 
+        }
+        button {
+                cursor: pointer; border-radius: 18px; margin: 15px;
+                height: 30px; width: 100px; 
+        }
+        .selected {
+                background-color: red;
+        }
+
+</style>
+</head>
+<body>
+</body>
+</html>
