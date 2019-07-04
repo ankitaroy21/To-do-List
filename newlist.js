@@ -1,8 +1,23 @@
-var STATE = { items: [], filter: ''    };
+let STATE = { items: [], filter: ''    };
 let lsState = localStorage.getItem('lcState') ? JSON.parse(localStorage.getItem('lcState')):null;
 if(lsState){ STATE=lsState; }
 function saveToLocalStorage(){
     localStorage.setItem('lcState',JSON.stringify(STATE));
+}
+function checkAllBtn(items) {
+    if(!items.length){
+        return;
+    }
+    for (i = 0; i < items.length; i++) {
+        if (items[i].status==='active') {
+            $('#checkAll').prop('checked', false);
+            saveToLocalStorage();
+            return;
+        }
+    }
+    $('#checkAll').prop('checked', true);
+    saveToLocalStorage();
+    
 }
 function checkBtnClk(item) {
     item.status=item.status==='completed'?'active':'completed';
@@ -28,11 +43,11 @@ function editOption(item,myInput) {
     $(myInput).val(originalText);
     $(myInput).focus();
     $(myInput).keypress(function(event) {  
-        var keycode = (event.keyCode ? event.keyCode : event.which);
+        let keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13') {
             let valueOf=event.target.value;
             if(valueOf!="") { 
-                var letterNumber = /^[0-9a-zA-Z]+$/;
+                const letterNumber = /^[0-9a-zA-Z]+$/;
                 if(valueOf.match(letterNumber)) {
                     item.text=valueOf;
                     render();
@@ -53,12 +68,11 @@ function editOption(item,myInput) {
 
     });
 }
-
 function createNote(item,index) {
-    var timer = 0;
-    var delay = 200;
-    var prevent = false;
-    let checkBtn=$('<input type="checkbox">');
+    let timer = 0;
+    const delay = 200;
+    let prevent = false;
+    let checkBtn=$('<input type="checkbox" class="checkBox"/><label for="checkBox"></label>');
     checkBtn.click(function() { checkBtnClk(item); });
     let textField=$('<span title='+item.text+'>'+item.text+'<span>');
     let closeBtn=$('<span id="cross"><strong>X</strong></span>');
@@ -91,17 +105,18 @@ function createNote(item,index) {
 }
 function render(){
     $('#myList').html("");
-    let i;
+    let i,filteredItems;
     if (!STATE.items.length){ $("button").hide(); $("#noOfItems").hide(); }
     else { $("button").show(); $("#noOfItems").show(); }
-    if(!STATE.filter) { var filteredItems=STATE.items; }
+    if(!STATE.filter) { filteredItems=STATE.items; }
     else {
-        var filteredItems= STATE.items.filter(function(j) {
+            filteredItems= STATE.items.filter(function(j) {
             return j.status===STATE.filter;
         });
     }
+    checkAllBtn(filteredItems);
     for (i = 0; i < filteredItems.length; i++) {
-        var item=filteredItems[i];
+        let item=filteredItems[i];
         let myNote=createNote(item,i);
         $("#myList").append(myNote);
     }
@@ -109,7 +124,10 @@ function render(){
 }
 function addNote(valueOf) {
     STATE.items.push({text:valueOf, addOption:false ,status:'active'});
-    render(); saveToLocalStorage();
+    //STATE.filter=""; 
+    render(); 
+    $('#checkAll').prop('checked',false);
+    saveToLocalStorage();
 }
 function callAll() {
     STATE.filter="";
@@ -147,7 +165,7 @@ function enterFunc(event) {
     if(keycode == '13') {
         let valueOf=event.target.value;
         if(valueOf!="") { 
-            var letterNumber = /^[0-9a-zA-Z]+$/;
+            const letterNumber = /^[0-9a-zA-Z]+$/;
             if(valueOf.match(letterNumber)) {
                 valueOf=valueOf;
                 addNote(valueOf);
@@ -162,10 +180,12 @@ function escFunc(e) {
 function addBody() {
     let heading=$('<h1>todos</h1><br>');
     $('body').append(heading);
-    let textHolder=$('<input type="text" id="root" placeholder="What needs to be done?" autofocus><br>');
-    $('body').append(textHolder);
-    let mainCheckbox =$('<br><input id="checkAll" type="checkbox"> <label for "checkAll">Mark all as complete</label><br><br>');
-    $('body').append(mainCheckbox);
+    let subHeading=$('<span></span>');
+    let textHolder=$('<input type="text" id="root" placeholder="What needs to be done?" autofocus sytle="position: absolute"><br>');
+    let mainCheckbox =$('<input id="checkAll" class="checkBox" type="checkbox">');
+    $(subHeading).append(mainCheckbox);
+    $(subHeading).append(textHolder);
+    $('body').append(subHeading);
     let myList=$('<ul id="myList"></ul>');
     $('body').append(myList);
     let button1=$('<br><br><p id="noOfItems" style="cursor:initial"></p>');
