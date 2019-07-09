@@ -39,7 +39,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 300;
-}h1 {
+}
+h1 {
 	position: absolute;
 	top: -155px;
 	width: 100%;
@@ -52,46 +53,45 @@ body {
 	text-rendering: optimizeLegibility;
 }
 
-        #cross{
-                font-weight: bold; color: red; cursor: pointer; opacity: 0;
-                position: absolute; right: 0; top:-10; font-family:'Barrio';
-
-        }
-        #cross:hover {
-                opacity: 1;
-		}
-		#myList {
-			border-bottom: 1px solid #CECECE;
-			box-shadow: 0 20px 10px -9px rgba(0,0,0,15);
-		}
-        ul#myList li {
-                white-space: initial;
-        }
-        li {
-                list-style:none; border: 5px; position: relative;
-                font-size: 20px; background-color: white;
-                cursor:pointer; font-family: 'Nobile'; padding-top: 5px;
-                box-shadow: 0 0 0 0.2em rgb(250, 253, 44);
-                margin: 30px; line-height: 200%;
-        }
-        li:hover {
-                background-color: blanchedalmond;
-        }
-        .checked {
-                text-decoration: line-through; opacity: 0.5;
-        }
-        #root {
-                width: 400px; height:70px; outline: 0; border: 0; transform: skew(10deg);
-                font-size: 30px; text-align: left; background-color: white;
-                display: block; margin-left: auto; margin-right: auto; 
-        }
-        #editOp {
-                position: relative; left:0; top: 0; 
-        }
-        .selected {
-                background-color: red;
-        }
-        :focus {
+#cross{
+        font-weight: bold; color: red; cursor: pointer; opacity: 0;
+        position: absolute; right: 0; top:-10; font-family:'Barrio';
+}
+#cross:hover {
+        opacity: 1;
+}
+#myList {
+	border-bottom: 1px solid #CECECE;
+	box-shadow: 0 20px 10px -9px rgba(0,0,0,15);
+}
+ul#myList li {
+        white-space: initial;
+}
+li {
+        list-style:none; border: 5px; position: relative;
+        font-size: 20px; background-color: white;
+        cursor:pointer; font-family: 'Nobile'; padding-top: 5px;
+        box-shadow: 0 0 0 0.2em rgb(250, 253, 44);
+        margin: 30px; line-height: 200%;
+}
+li:hover {
+        background-color: blanchedalmond;
+}
+.checked {
+        text-decoration: line-through; opacity: 0.5;
+}
+#root {
+        width: 400px; height:70px; outline: 0; border: 0; transform: skew(10deg);
+        font-size: 30px; text-align: left; background-color: white;
+        display: block; margin-left: auto; margin-right: auto; 
+}
+#editOp {
+        position: relative; left:0; top: 0; 
+}
+.selected {
+        background-color: red;
+}
+:focus {
 	outline: 0;
 }
 .todo-list {
@@ -99,33 +99,27 @@ body {
 	padding: 0;
 	list-style: none;
 }
-
- li {
+li {
 	position: relative;
 	font-size: 24px;
 	border-bottom: 1px solid #ededed;
 }
-
 li:last-child {
 	border-bottom: none;
 }
-
 li.editing {
 	border-bottom: none;
 	padding: 0;
 }
-
- li.editing .edit {
+li.editing .edit {
 	display: block;
 	width: 506px;
 	padding: 12px 16px;
 	margin: 0 0 0 43px;
 }
-
- li.editing .view {
+li.editing .view {
 	display: none;
 }
-
 li .toggle {
 	text-align: center;
 	width: 40px;
@@ -138,21 +132,17 @@ li .toggle {
 	-webkit-appearance: none;
 	appearance: none;
 }
-
- li  {
+li  {
 	opacity: 0;
 }
-
 li+ label {
 	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
 	background-repeat: no-repeat;
 	background-position: center left;
 }
-
 li .toggle:checked + label {
 	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
 }
-
 li label {
 	word-break: break-all;
 	padding: 15px 15px 15px 60px;
