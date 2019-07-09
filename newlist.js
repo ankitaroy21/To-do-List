@@ -150,15 +150,14 @@ function checkFunc(count) {
         for (i = 0; i < STATE.items.length; i++) {
             STATE.items[i].status='completed';
         }
-        STATE.filter='completed';
     }
     else {
         for (i = 0; i < STATE.items.length; i++) {
             STATE.items[i].status='active';
-        }
-        STATE.filter='active';
+        }  
     }
-    render();
+    STATE.filter='';
+    render(); saveToLocalStorage();
 }
 function enterFunc(event) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
