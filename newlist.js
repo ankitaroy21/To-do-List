@@ -124,9 +124,7 @@ function render(){
 }
 function addNote(valueOf) {
     STATE.items.push({text:valueOf, addOption:false ,status:'active'});
-    //STATE.filter=""; 
     render(); 
-    $('#checkAll').prop('checked',false);
     saveToLocalStorage();
 }
 function callAll() {
